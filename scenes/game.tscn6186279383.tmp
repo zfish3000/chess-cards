@@ -1,0 +1,44 @@
+[gd_scene format=4 uid="uid://v14k1sl0mvte"]
+
+[ext_resource type="Script" uid="uid://daruxqyjeu3bw" path="res://scenes/game2.gd" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://bxgm1db6v0qu4" path="res://icon.svg" id="2_lnu2h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
+texture = ExtResource("2_lnu2h")
+4:3/0 = 0
+1:0/0 = 0
+5:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_feb5d"]
+sources/0 = SubResource("TileSetAtlasSource_e2o6t")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(128, 128)
+
+[node name="Game" type="Node2D" unique_id=218237173]
+script = ExtResource("1_yqjtg")
+
+[node name="Board" type="Node2D" parent="." unique_id=1182409154]
+
+[node name="BoardTiles" type="TileMapLayer" parent="Board" unique_id=1268905909]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAEAAAABAAAAAAACAAAAAAABAAAAAAADAAEAAAABAAAAAAAEAAAAAAABAAAAAAAFAAEAAAABAAAAAAAGAAAAAAABAAAAAAAGAAIAAAABAAAAAAAEAAIAAAABAAAAAAAFAAMAAAABAAAAAAAGAAQAAAABAAAAAAAFAAUAAAABAAAAAAAGAAYAAAABAAAAAAAFAAcAAAABAAAAAAAEAAQAAAABAAAAAAABAAMAAAABAAAAAAABAAUAAAABAAAAAAADAAUAAAABAAAAAAADAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAYAAAABAAAAAAAAAAYAAAABAAAAAAAAAAQAAAABAAAAAAACAAQAAAABAAAAAAAAAAIAAAABAAAAAAAEAAYAAAABAAAAAAAHAAcAAAABAAAAAAAHAAUAAAABAAAAAAAHAAMAAAABAAAAAAAHAAEAAAABAAAAAAAGAAcAAAAEAAMAAAAEAAcAAAAEAAMAAAACAAcAAAAEAAMAAAAAAAcAAAAEAAMAAAABAAYAAAAEAAMAAAAAAAUAAAAEAAMAAAACAAUAAAAEAAMAAAADAAYAAAAEAAMAAAAEAAUAAAAEAAMAAAAFAAYAAAAEAAMAAAAGAAUAAAAEAAMAAAAHAAYAAAAEAAMAAAAHAAQAAAAEAAMAAAAGAAMAAAAEAAMAAAAHAAIAAAAEAAMAAAAGAAEAAAAEAAMAAAAHAAAAAAAEAAMAAAAFAAAAAAAEAAMAAAAEAAEAAAAEAAMAAAADAAAAAAAEAAMAAAACAAEAAAAEAAMAAAABAAAAAAAEAAMAAAAAAAEAAAAEAAMAAAABAAIAAAAEAAMAAAAAAAMAAAAEAAMAAAABAAQAAAAEAAMAAAAFAAIAAAAEAAMAAAAFAAQAAAAEAAMAAAACAAMAAAAEAAMAAAADAAMAAAABAAAAAAAEAAMAAAAEAAMAAAADAAQAAAAEAAMAAAACAAIAAAABAAAAAAADAAIAAAAEAAMAAAA=")
+tile_set = SubResource("TileSet_feb5d")
+
+[node name="Pieces" type="TileMapLayer" parent="Board" unique_id=1899224918]
+tile_map_data = PackedByteArray("AAACAAcAAAAFAAUAAAAEAAcAAAAFAAUAAAA=")
+tile_set = SubResource("TileSet_feb5d")
+
+[node name="Highlights" type="TileMapLayer" parent="Board" unique_id=624457410]
+tile_set = SubResource("TileSet_feb5d")
+
+[node name="BoardClickArea" type="Area2D" parent="Board" unique_id=1318197706]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/BoardClickArea" unique_id=243615106]
+position = Vector2(64, 64)
+shape = SubResource("RectangleShape2D_yqjtg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=840221073]
+position = Vector2(65, 61)
+zoom = Vector2(4, 4)
+
+[connection signal="input_event" from="Board/BoardClickArea" to="." method="_on_board_click_area_input_event"]
