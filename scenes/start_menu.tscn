@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://2lrw5dfusqn3"]
+
+[ext_resource type="Script" uid="uid://dmow22xtf8did" path="res://scripts/start_menu.gd" id="1_ouf4f"]
+
+[node name="StartMenu" type="Control" unique_id=951655995]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ouf4f")
+
+[node name="Start" type="Button" parent="." unique_id=207750083]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="NormalStart" type="Button" parent="." unique_id=566642299]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_left = -1.5258789e-05
+offset_top = 76.0
+offset_right = -6.1035156e-05
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Normal Start"
+
+[node name="TestingStart" type="Button" parent="." unique_id=279759702]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+offset_left = -1.5258789e-05
+offset_top = 156.0
+offset_right = -6.1035156e-05
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Testing"
+
+[node name="Label" type="Label" parent="." unique_id=236154400]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 128
+text = "Chess Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="NormalStart" to="." method="_on_start_pressed" binds= [1]]
+[connection signal="pressed" from="TestingStart" to="." method="_on_start_pressed" binds= [2]]
