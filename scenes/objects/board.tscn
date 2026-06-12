@@ -1,0 +1,79 @@
+[gd_scene format=4 uid="uid://dsbw46p2fcg73"]
+
+[ext_resource type="Script" uid="uid://c1fatb2pq6x5k" path="res://scripts/board.gd" id="1_8y1gf"]
+[ext_resource type="Texture2D" uid="uid://cpjp3ffvdjr1r" path="res://art/tiles.png" id="1_mrdkj"]
+[ext_resource type="Texture2D" uid="uid://crf1b27ojb0b7" path="res://art/pieces.png" id="2_8y1gf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
+resource_name = "Tiles"
+texture = ExtResource("1_mrdkj")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
+resource_name = "Pieces"
+texture = ExtResource("2_8y1gf")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_feb5d"]
+sources/0 = SubResource("TileSetAtlasSource_iywne")
+sources/1 = SubResource("TileSetAtlasSource_p57ef")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(160, 160)
+
+[node name="Board" type="Node2D" unique_id=2099382490 node_paths=PackedStringArray("tile_board", "piece_board", "highlight_board")]
+script = ExtResource("1_8y1gf")
+tile_board = NodePath("Tiles")
+piece_board = NodePath("Pieces")
+highlight_board = NodePath("Highlights")
+metadata/_custom_type_script = "uid://c1fatb2pq6x5k"
+
+[node name="Tiles" type="TileMapLayer" parent="." unique_id=398049692]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAEAAAAAAAEAAAACAAAAAAAAAAEAAAADAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAAMAAAAAAAEAAAAGAAQAAAAAAAEAAAAFAAUAAAAAAAEAAAAGAAYAAAAAAAEAAAAEAAQAAAAAAAEAAAABAAMAAAAAAAEAAAADAAUAAAAAAAEAAAACAAQAAAAAAAEAAAAAAAIAAAAAAAEAAAAHAAcAAAAAAAEAAAAHAAUAAAAAAAEAAAAHAAMAAAAAAAEAAAAHAAEAAAAAAAEAAAAGAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAACAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAYAAAAAAAAAAAACAAUAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAQAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAQAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAEAAAAEAAMAAAAAAAAAAAADAAQAAAAAAAAAAAACAAIAAAAAAAEAAAADAAIAAAAAAAAAAAABAAcAAAAAAAEAAAAAAAYAAAAAAAEAAAABAAUAAAAAAAEAAAAGAAAAAAAAAAEAAAAFAAcAAAAAAAEAAAAEAAYAAAAAAAEAAAADAAcAAAAAAAEAAAACAAYAAAAAAAEAAAAAAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAAAAQAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_feb5d")
+
+[node name="Pieces" type="TileMapLayer" parent="." unique_id=2064771293]
+tile_map_data = PackedByteArray("AAAEAAcAAQAAAAEAAAAEAAAAAQAAAAMAAAA=")
+tile_set = SubResource("TileSet_feb5d")
+
+[node name="Highlights" type="TileMapLayer" parent="." unique_id=1888663670]
+self_modulate = Color(1, 1, 1, 0.6862745)
+tile_set = SubResource("TileSet_feb5d")
+
+[node name="BoardClickArea" type="Area2D" parent="." unique_id=1248580116]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoardClickArea" unique_id=73503421]
+position = Vector2(64, 64)
+shape = SubResource("RectangleShape2D_yqjtg")
+
+[connection signal="input_event" from="BoardClickArea" to="." method="_on_board_click_area_input_event"]

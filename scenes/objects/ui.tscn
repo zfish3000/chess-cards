@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://blueckvi7ndnt"]
+
+[ext_resource type="Script" uid="uid://bxjooxrt8d4wl" path="res://scripts/ui.gd" id="1_3frfb"]
+
+[node name="UI" type="CanvasLayer" unique_id=533841987]
+script = ExtResource("1_3frfb")
+
+[node name="Money" type="Label" parent="." unique_id=976829722]
+offset_right = 100.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0, 0.72420746, 1.92523e-07, 1)
+theme_override_font_sizes/font_size = 40
+text = "$0"
